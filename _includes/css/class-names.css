@@ -1,0 +1,10 @@
+/* Bad example */
+.t { ... }
+.red { ... }
+.header { ... }
+
+/* Good example */
+.tweet { ... }
+.warning-error { ... }
+.warning-critical { ... }
+.tweet-header { ... }

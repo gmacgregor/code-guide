@@ -1,0 +1,36 @@
+/* Examples of bad CSS */
+
+/* uses id; qualified with HTML tag name */
+h2#headline {
+  font-size: 36px;
+}
+
+/* uses id; more than one id in rule; qualified with HTML tag name */
+div#page #sidebar h2.title {
+  color: green;
+}
+
+/* js-* hook in CSS */
+.js-visible: {
+  display: block;
+}
+
+/* uses generic element for styling */
+span {
+  color: red;
+}
+
+/* depth of applicability of 5
+   CSS is tied directly to the HTML structure of the page :(
+*/
+body.article #page #sidebar p span {
+  color: red;
+}
+
+/* depth of applicability of 1
+   CSS knows nothing about the HTML; we can move the class
+   to any element on the page and the style will apply :)
+*/
+.some-thing {
+  color: red;
+}

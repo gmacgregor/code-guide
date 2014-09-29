@@ -1,0 +1,31 @@
+
+<!-- without ARIA roles -->
+<div class="nav">
+  <ul>
+    <li>Home</li>
+    <li>Products</li>
+    <li>Support</li>
+  </ul>
+</div>
+<div class="main-content">
+  <p>Hello, I am the main content of the page</p>
+</div>
+<div class="secondary-content">
+  <p>I am additional, complimentary content but not the main content of this page</p>
+</div>
+
+<!-- with ARIA roles -->
+<div class="nav" role="navigation">
+  <!-- alternatively, a <nav> tag could be used above with no role attribute -->
+  <ul>
+    <li>Home</li>
+    <li>Products</li>
+    <li>Support</li>
+  </ul>
+</div>
+<div class="main-content" role="main">
+  <p>Hello, I am the main content of the page</p>
+</div>
+<div class="secondary-content" role="secondary">
+  <p>I am additional, complimentary content but not the main content of this page</p>
+</div>

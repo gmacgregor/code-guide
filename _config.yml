@@ -1,0 +1,7 @@
+name:          Globe and Mail front-end code style guide
+description:   Standards for developing flexible, durable, and sustainable HTML, CSS and JavaScript
+url:           http://codeguide.co
+
+markdown:      rdiscount
+permalink:     pretty
+highlighter:   pygments
