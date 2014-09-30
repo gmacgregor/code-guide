@@ -194,6 +194,9 @@ pre code {
   padding: 3rem 1rem;
   color: rgba(255,255,255,.5);
   text-align: center;
+  background-image: url('http://beta.images.theglobeandmail.com/media/www/images/flag/gam-square.png');
+  background-repeat: no-repeat;
+  background-size: 12%;
   background-color: #2a3440;
 }
 .masthead h1 {
