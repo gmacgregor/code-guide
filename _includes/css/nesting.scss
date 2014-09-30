@@ -1,9 +1,91 @@
-// Without nesting
-.table > thead > tr > th { … }
-.table > thead > tr > td { … }
+/* Actual (terrible) CSS from one of our .scss files */
+.hentry {
+  header {
+    margin: 0;
+    .byline {
+      @include fontprattheavy($size: 11px, $lineHeight: 1.5);
+      text-transform: uppercase;
+      a {
+        color: $news;
+        &:hover {
+          color: #000;
+        }
+      }
+    }
+    .authorDetails {
+      width: 160px;
+      display: inline-block;
+      float: right;
+      .authorImage {
+        float: left;
+        position: relative;
+        display: block;
+        width: 140px;
+        margin-bottom: 5px;
+        .authorw108x80 {
+          float: left;
+          position: relative;
+          bottom: 0;
+          overflow: hidden;
+          width: 108px;
+          height: 80px;
+          z-index: 20;
+        }
+        .authorColor {
+          display: block;
+          position: absolute;
+          bottom: 0;
+          z-index: 1;
+          width: 140px;
+          height: 65px;
+          background-color: #eaeff2;
+        }
+      }
+    }
+  }
+}
 
-// With nesting
-.table > thead > tr {
-  > th { … }
-  > td { … }
+/* This ends up producing the following ... */
+.hentry header {
+  margin: 0;
+}
+.hentry header .byline {
+  font: normal 11px/1.5 "PrattHeavy", Georgia, Palatino, "Book Antiqua", "Times New Roman", serif;
+  text-transform: uppercase;
+}
+.hentry header .byline a {
+  color: red;
+}
+.hentry header .byline a:hover {
+  color: #000;
+}
+.hentry header .authorDetails {
+  width: 160px;
+  display: inline-block;
+  float: right;
+}
+.hentry header .authorDetails .authorImage {
+  float: left;
+  position: relative;
+  display: block;
+  width: 140px;
+  margin-bottom: 5px;
+}
+.hentry header .authorDetails .authorImage .authorw108x80 {
+  float: left;
+  position: relative;
+  bottom: 0;
+  overflow: hidden;
+  width: 108px;
+  height: 80px;
+  z-index: 20;
+}
+.hentry header .authorDetails .authorImage .authorColor {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+  width: 140px;
+  height: 65px;
+  background-color: #eaeff2;
 }

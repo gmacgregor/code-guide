@@ -110,6 +110,7 @@
     </ul>
     <p>Often times we don't need to set all the values a shorthand property represents. For example, HTML headings only set top and bottom margin, so when necessary, only override those two values. Excessive use of shorthand properties often leads to sloppier code with unnecessary overrides and unintended side effects.</p>
     <p>The Mozilla Developer Network has a great article on <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties">shorthand properties</a> for those unfamiliar with notation and behavior.</p>
+    <p>TODO: border-radius! one line?</p>
   </div>
   <div class="col">
     {% highlight css %}{% include css/shorthand.css %}{% endhighlight %}
@@ -119,7 +120,7 @@
 <div class="section" id="css-nesting">
   <div class="col">
     <h3>Nesting in Sass</h3>
-    <p>Avoid unnecessary nesting. Just because you can nest doesn't mean you should. Consider nesting only if you must scope styles to a parent and if there are multiple elements to be nested. Overuse of nesting can easily lead to "selector-itis" and a long depth of applicability.</p>
+    <p>Avoid unnecessary nesting. Just because you can nest doesn't mean you should. Consider nesting only if you must scope styles to a parent and if there are multiple elements to be nested. <strong>Overuse of nesting can easily lead to "selector-itis" and a long depth of applicability</strong>.</p>
   </div>
   <div class="col">
     {% highlight scss %}{% include css/nesting.scss %}{% endhighlight %}

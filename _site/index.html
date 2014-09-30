@@ -202,6 +202,7 @@
       <li><code>itemscope</code>: the data within is "about" a particular thing</li>
       <li><code>itemtype</code>: specifies the type of item within; always immediately follows itemscope</li>
       <li><code>itemprop</code>: identifies properties of an item</li>
+      <p>TODO: identify strandard article itemprops as they relate to us</p>
     </ul>
   </div>
   <div class="col">
@@ -234,6 +235,7 @@
       </blockquote>
       <li>the "role" attribute should not be placed on another element that already has semantic meaning. It should only be placed on <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code> elements.</li>
       <li>TODO: aria-label and aria-labelledby</li>
+      <li>TODO: accessibility testing</li>
     </ul>
   </div>
   <div class="col">
@@ -570,6 +572,7 @@
     </ul>
     <p>Often times we don't need to set all the values a shorthand property represents. For example, HTML headings only set top and bottom margin, so when necessary, only override those two values. Excessive use of shorthand properties often leads to sloppier code with unnecessary overrides and unintended side effects.</p>
     <p>The Mozilla Developer Network has a great article on <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties">shorthand properties</a> for those unfamiliar with notation and behavior.</p>
+    <p>TODO: border-radius! one line?</p>
   </div>
   <div class="col">
     <div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* Bad example */</span>
@@ -594,17 +597,99 @@
 <div class="section" id="css-nesting">
   <div class="col">
     <h3>Nesting in Sass</h3>
-    <p>Avoid unnecessary nesting. Just because you can nest doesn't mean you should. Consider nesting only if you must scope styles to a parent and if there are multiple elements to be nested. Overuse of nesting can easily lead to "selector-itis" and a long depth of applicability.</p>
+    <p>Avoid unnecessary nesting. Just because you can nest doesn't mean you should. Consider nesting only if you must scope styles to a parent and if there are multiple elements to be nested. <strong>Overuse of nesting can easily lead to "selector-itis" and a long depth of applicability</strong>.</p>
   </div>
   <div class="col">
-    <div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Without nesting</span>
-<span class="nc">.table</span> <span class="o">&gt;</span> <span class="nt">thead</span> <span class="o">&gt;</span> <span class="nt">tr</span> <span class="o">&gt;</span> <span class="nt">th</span> <span class="p">{</span> <span class="err">…</span> <span class="p">}</span>
-<span class="nc">.table</span> <span class="o">&gt;</span> <span class="nt">thead</span> <span class="o">&gt;</span> <span class="nt">tr</span> <span class="o">&gt;</span> <span class="nt">td</span> <span class="p">{</span> <span class="err">…</span> <span class="p">}</span>
+    <div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="cm">/* Actual (terrible) CSS from one of our .scss files */</span>
+<span class="nc">.hentry</span> <span class="p">{</span>
+  <span class="nt">header</span> <span class="p">{</span>
+    <span class="na">margin</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="nc">.byline</span> <span class="p">{</span>
+      <span class="k">@include</span><span class="nd"> fontprattheavy</span><span class="p">(</span><span class="nv">$size</span><span class="o">:</span> <span class="mi">11</span><span class="kt">px</span><span class="o">,</span> <span class="nv">$lineHeight</span><span class="o">:</span> <span class="mi">1</span><span class="mf">.5</span><span class="p">);</span>
+      <span class="na">text-transform</span><span class="o">:</span> <span class="no">uppercase</span><span class="p">;</span>
+      <span class="nt">a</span> <span class="p">{</span>
+        <span class="na">color</span><span class="o">:</span> <span class="nv">$news</span><span class="p">;</span>
+        <span class="k">&amp;</span><span class="nd">:hover</span> <span class="p">{</span>
+          <span class="na">color</span><span class="o">:</span> <span class="mh">#000</span><span class="p">;</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nc">.authorDetails</span> <span class="p">{</span>
+      <span class="na">width</span><span class="o">:</span> <span class="mi">160</span><span class="kt">px</span><span class="p">;</span>
+      <span class="na">display</span><span class="o">:</span> <span class="no">inline</span><span class="o">-</span><span class="no">block</span><span class="p">;</span>
+      <span class="na">float</span><span class="o">:</span> <span class="no">right</span><span class="p">;</span>
+      <span class="nc">.authorImage</span> <span class="p">{</span>
+        <span class="na">float</span><span class="o">:</span> <span class="no">left</span><span class="p">;</span>
+        <span class="na">position</span><span class="o">:</span> <span class="no">relative</span><span class="p">;</span>
+        <span class="na">display</span><span class="o">:</span> <span class="no">block</span><span class="p">;</span>
+        <span class="na">width</span><span class="o">:</span> <span class="mi">140</span><span class="kt">px</span><span class="p">;</span>
+        <span class="na">margin-bottom</span><span class="o">:</span> <span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
+        <span class="nc">.authorw108x80</span> <span class="p">{</span>
+          <span class="na">float</span><span class="o">:</span> <span class="no">left</span><span class="p">;</span>
+          <span class="na">position</span><span class="o">:</span> <span class="no">relative</span><span class="p">;</span>
+          <span class="na">bottom</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+          <span class="na">overflow</span><span class="o">:</span> <span class="no">hidden</span><span class="p">;</span>
+          <span class="na">width</span><span class="o">:</span> <span class="mi">108</span><span class="kt">px</span><span class="p">;</span>
+          <span class="na">height</span><span class="o">:</span> <span class="mi">80</span><span class="kt">px</span><span class="p">;</span>
+          <span class="na">z-index</span><span class="o">:</span> <span class="mi">20</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nc">.authorColor</span> <span class="p">{</span>
+          <span class="na">display</span><span class="o">:</span> <span class="no">block</span><span class="p">;</span>
+          <span class="na">position</span><span class="o">:</span> <span class="no">absolute</span><span class="p">;</span>
+          <span class="na">bottom</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+          <span class="na">z-index</span><span class="o">:</span> <span class="mi">1</span><span class="p">;</span>
+          <span class="na">width</span><span class="o">:</span> <span class="mi">140</span><span class="kt">px</span><span class="p">;</span>
+          <span class="na">height</span><span class="o">:</span> <span class="mi">65</span><span class="kt">px</span><span class="p">;</span>
+          <span class="na">background-color</span><span class="o">:</span> <span class="mh">#eaeff2</span><span class="p">;</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 
-<span class="c1">// With nesting</span>
-<span class="nc">.table</span> <span class="o">&gt;</span> <span class="nt">thead</span> <span class="o">&gt;</span> <span class="nt">tr</span> <span class="p">{</span>
-  <span class="o">&gt;</span> <span class="nt">th</span> <span class="p">{</span> <span class="err">…</span> <span class="p">}</span>
-  <span class="o">&gt;</span> <span class="nt">td</span> <span class="p">{</span> <span class="err">…</span> <span class="p">}</span>
+<span class="cm">/* This ends up producing the following ... */</span>
+<span class="nc">.hentry</span> <span class="nt">header</span> <span class="p">{</span>
+  <span class="na">margin</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.hentry</span> <span class="nt">header</span> <span class="nc">.byline</span> <span class="p">{</span>
+  <span class="na">font</span><span class="o">:</span> <span class="no">normal</span> <span class="mi">11</span><span class="kt">px</span><span class="o">/</span><span class="mi">1</span><span class="mf">.5</span> <span class="s2">&quot;PrattHeavy&quot;</span><span class="o">,</span> <span class="n">Georgia</span><span class="o">,</span> <span class="n">Palatino</span><span class="o">,</span> <span class="s2">&quot;Book Antiqua&quot;</span><span class="o">,</span> <span class="s2">&quot;Times New Roman&quot;</span><span class="o">,</span> <span class="no">serif</span><span class="p">;</span>
+  <span class="na">text-transform</span><span class="o">:</span> <span class="no">uppercase</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.hentry</span> <span class="nt">header</span> <span class="nc">.byline</span> <span class="nt">a</span> <span class="p">{</span>
+  <span class="na">color</span><span class="o">:</span> <span class="nb">red</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.hentry</span> <span class="nt">header</span> <span class="nc">.byline</span> <span class="nt">a</span><span class="nd">:hover</span> <span class="p">{</span>
+  <span class="na">color</span><span class="o">:</span> <span class="mh">#000</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.hentry</span> <span class="nt">header</span> <span class="nc">.authorDetails</span> <span class="p">{</span>
+  <span class="na">width</span><span class="o">:</span> <span class="mi">160</span><span class="kt">px</span><span class="p">;</span>
+  <span class="na">display</span><span class="o">:</span> <span class="no">inline</span><span class="o">-</span><span class="no">block</span><span class="p">;</span>
+  <span class="na">float</span><span class="o">:</span> <span class="no">right</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.hentry</span> <span class="nt">header</span> <span class="nc">.authorDetails</span> <span class="nc">.authorImage</span> <span class="p">{</span>
+  <span class="na">float</span><span class="o">:</span> <span class="no">left</span><span class="p">;</span>
+  <span class="na">position</span><span class="o">:</span> <span class="no">relative</span><span class="p">;</span>
+  <span class="na">display</span><span class="o">:</span> <span class="no">block</span><span class="p">;</span>
+  <span class="na">width</span><span class="o">:</span> <span class="mi">140</span><span class="kt">px</span><span class="p">;</span>
+  <span class="na">margin-bottom</span><span class="o">:</span> <span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.hentry</span> <span class="nt">header</span> <span class="nc">.authorDetails</span> <span class="nc">.authorImage</span> <span class="nc">.authorw108x80</span> <span class="p">{</span>
+  <span class="na">float</span><span class="o">:</span> <span class="no">left</span><span class="p">;</span>
+  <span class="na">position</span><span class="o">:</span> <span class="no">relative</span><span class="p">;</span>
+  <span class="na">bottom</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="na">overflow</span><span class="o">:</span> <span class="no">hidden</span><span class="p">;</span>
+  <span class="na">width</span><span class="o">:</span> <span class="mi">108</span><span class="kt">px</span><span class="p">;</span>
+  <span class="na">height</span><span class="o">:</span> <span class="mi">80</span><span class="kt">px</span><span class="p">;</span>
+  <span class="na">z-index</span><span class="o">:</span> <span class="mi">20</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.hentry</span> <span class="nt">header</span> <span class="nc">.authorDetails</span> <span class="nc">.authorImage</span> <span class="nc">.authorColor</span> <span class="p">{</span>
+  <span class="na">display</span><span class="o">:</span> <span class="no">block</span><span class="p">;</span>
+  <span class="na">position</span><span class="o">:</span> <span class="no">absolute</span><span class="p">;</span>
+  <span class="na">bottom</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="na">z-index</span><span class="o">:</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="na">width</span><span class="o">:</span> <span class="mi">140</span><span class="kt">px</span><span class="p">;</span>
+  <span class="na">height</span><span class="o">:</span> <span class="mi">65</span><span class="kt">px</span><span class="p">;</span>
+  <span class="na">background-color</span><span class="o">:</span> <span class="mh">#eaeff2</span><span class="p">;</span>
 <span class="p">}</span></code></pre></div>
   </div>
 </div>
