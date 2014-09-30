@@ -737,6 +737,104 @@
   </div>
 </div>
 
+<div class="section" id="css-bem">
+  <div class="col">
+    <h3>BEM</h3>
+    <p>BEM is an acronym for <strong>B</strong>lock <strong>E</strong>lement <strong>M</strong>odifier. It is a <a href="https://bem.info/method/">development framework</a> that goes beyond the scope of just CSS but its principles can be appropriated specifically for CSS. BEM methodology represents a simple and effective way to group together different components/widgets. It is similar in principle to <a href="http://oocss.org/">OOCSS</a> and <a href="https://smacss.com/">SMACSS</a></p>
+    <img src="/images/BEM-760.png" id="img-BEM">
+    <h4>Block</h4>
+    <ul>
+      <li>building block; an independent entity; an abstraction or component</li>
+      <li>allows arbitrary placement on the page</li>
+      <li>can be nested in another block; can contain other blocks</li>
+    </ul>
+    <h4>Element</h4>
+    <ul>
+      <li>part of a block that does something</li>
+      <li>context-dependent: makes sense in relation to it's block</li>
+      <li>helps form block as a whole</li>
+    </ul>
+    <h4>Modifier</h4>
+    <ul>
+      <li>can be applied to a block or an element</li>
+      <li>describes state change or (minor) variations</li>
+    </ul>
+    <p>Using BEM-style class names in markup can tell other developers what function the component performs. Relations (or not) between things in the HTML become apparent:<p>
+    <ul>
+      <li>somehting might be a standalone component</li>
+      <li>something else a child element of a component</li>
+      <li>something else a variation of a component or a compontent in a different state</li>
+    </ul>
+    <p>Practically speaking, we can expect that some things won't be "BEM'able" nor should we expect that <em>everything</em> follow BEM syntax. For example: <code>.caps { text-transform: uppercase; }</code>. BEM excels when applied to components/widegts/objects where individual parts make up a related whole. Class names should be descriptive and distinct and should not be bound to HTML selectors. Links between components should be plainly visible to other developers.</p>
+    <p>TODO: do we namespace BEM components> ie. instead of a block "head" block "component-head"?</p>
+  </div>
+  <div class="col">
+    <div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/*</span>
+<span class="c">BEM convention follows this pattern:</span>
+
+<span class="c">// Blocks</span>
+<span class="c">.block-name</span>
+
+<span class="c">// Elements</span>
+<span class="c">.block-name__element</span>
+
+<span class="c">// Modifiers</span>
+<span class="c">.block-name--modifier</span>
+<span class="c">.block-name__element--modifier</span>
+
+<span class="c">*/</span>
+
+<span class="nc">.block</span>
+
+<span class="nc">.block__element</span>
+<span class="nc">.block-name___element</span>
+
+<span class="nc">.form__data-row</span>
+
+<span class="nc">.form__label</span>
+<span class="nc">.form__label--emphasize</span>
+
+<span class="nc">.form__input-text</span>
+<span class="nc">.form__input-text--small</span>
+
+<span class="nc">.form__input-radio</span>
+
+<span class="nc">.global-search</span>
+  <span class="nc">.global-search__label</span>
+  <span class="nc">.global-search__input-search</span>
+  <span class="nc">.global-search__button-submit</span>
+
+<span class="o">&lt;</span><span class="nt">div</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;head&quot;</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nt">div</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;menu&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nt">ul</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;menu__tabs&quot;</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nt">li</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;menu__tabs-item&quot;</span><span class="o">&gt;</span> <span class="o">...</span> <span class="o">&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nt">li</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;menu__tabs-item&quot;</span><span class="o">&gt;</span> <span class="o">...</span> <span class="o">&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nt">li</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;menu__tabs-item&quot;</span><span class="o">&gt;</span> <span class="o">...</span> <span class="o">&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nt">li</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;menu__tabs-item&quot;</span><span class="o">&gt;</span> <span class="o">...</span> <span class="o">&lt;/</span><span class="nt">li</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="nt">ul</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="nt">div</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nt">div</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;logo&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nt">img</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;logo__image&quot;</span> <span class="nt">src</span><span class="o">=</span><span class="s2">&quot;...&quot;</span> <span class="nt">width</span><span class="o">=</span><span class="s2">&quot;200&quot;</span> <span class="nt">height</span><span class="o">=</span><span class="s2">&quot;500&quot;</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="nt">div</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nt">div</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;search-form&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nt">form</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;search-form__form&quot;</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nt">label</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;search-form__label&quot;</span><span class="o">&gt;</span><span class="nt">Search</span><span class="o">&lt;/</span><span class="nt">label</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nt">input</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;search-form__input-text&quot;</span> <span class="nt">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nt">input</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;search-form__input-button&quot;</span> <span class="nt">type</span><span class="o">=</span><span class="s2">&quot;submit&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="nt">form</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="nt">div</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nt">div</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;auth-form&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nt">form</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;auth-form__form&quot;</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nt">label</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;auth-form__label&quot;</span><span class="o">&gt;</span><span class="nt">Username</span><span class="o">&lt;/</span><span class="nt">label</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nt">input</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;auth-form__input-text&quot;</span> <span class="nt">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nt">label</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;auth-form__label&quot;</span><span class="o">&gt;</span><span class="nt">Password</span><span class="o">&lt;/</span><span class="nt">label</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nt">input</span> <span class="nt">class</span><span class="o">=</span><span class="s2">&quot;auth-form__input-button&quot;</span> <span class="nt">type</span><span class="o">=</span><span class="s2">&quot;submit&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;/</span><span class="nt">form</span><span class="o">&gt;</span>
+  <span class="o">&lt;/</span><span class="nt">div</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="nt">div</span><span class="o">&gt;</span></code></pre></div>
+  </div>
+</div>
+
 <div class="section" id="css-organization">
   <div class="col">
     <h3>Organization</h3>

@@ -187,6 +187,42 @@
   </div>
 </div>
 
+<div class="section" id="css-bem">
+  <div class="col">
+    <h3>BEM</h3>
+    <p>BEM is an acronym for <strong>B</strong>lock <strong>E</strong>lement <strong>M</strong>odifier. It is a <a href="https://bem.info/method/">development framework</a> that goes beyond the scope of just CSS but its principles can be appropriated specifically for CSS. BEM methodology represents a simple and effective way to group together different components/widgets. It is similar in principle to <a href="http://oocss.org/">OOCSS</a> and <a href="https://smacss.com/">SMACSS</a></p>
+    <img src="/images/BEM-760.png" id="img-BEM">
+    <h4>Block</h4>
+    <ul>
+      <li>building block; an independent entity; an abstraction or component</li>
+      <li>allows arbitrary placement on the page</li>
+      <li>can be nested in another block; can contain other blocks</li>
+    </ul>
+    <h4>Element</h4>
+    <ul>
+      <li>part of a block that does something</li>
+      <li>context-dependent: makes sense in relation to it's block</li>
+      <li>helps form block as a whole</li>
+    </ul>
+    <h4>Modifier</h4>
+    <ul>
+      <li>can be applied to a block or an element</li>
+      <li>describes state change or (minor) variations</li>
+    </ul>
+    <p>Using BEM-style class names in markup can tell other developers what function the component performs. Relations (or not) between things in the HTML become apparent:<p>
+    <ul>
+      <li>somehting might be a standalone component</li>
+      <li>something else a child element of a component</li>
+      <li>something else a variation of a component or a compontent in a different state</li>
+    </ul>
+    <p>Practically speaking, we can expect that some things won't be "BEM'able" nor should we expect that <em>everything</em> follow BEM syntax. For example: <code>.caps { text-transform: uppercase; }</code>. BEM excels when applied to components/widegts/objects where individual parts make up a related whole. Class names should be descriptive and distinct and should not be bound to HTML selectors. Links between components should be plainly visible to other developers.</p>
+    <p>TODO: do we namespace BEM components> ie. instead of a block "head" block "component-head"?</p>
+  </div>
+  <div class="col">
+    {% highlight css %}{% include css/bem.css %}{% endhighlight %}
+  </div>
+</div>
+
 <div class="section" id="css-organization">
   <div class="col">
     <h3>Organization</h3>

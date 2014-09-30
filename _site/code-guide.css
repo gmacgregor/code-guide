@@ -265,6 +265,9 @@ pre code {
   display: inline;
 }
 
+#img-BEM {
+  width: 100%;
+}
 
 /*
  * Syntax highlighting

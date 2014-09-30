@@ -1,0 +1,65 @@
+
+/*
+BEM convention follows this pattern:
+
+// Blocks
+.block-name
+
+// Elements
+.block-name__element
+
+// Modifiers
+.block-name--modifier
+.block-name__element--modifier
+
+*/
+
+.block
+
+.block__element
+.block-name___element
+
+.form__data-row
+
+.form__label
+.form__label--emphasize
+
+.form__input-text
+.form__input-text--small
+
+.form__input-radio
+
+.global-search
+  .global-search__label
+  .global-search__input-search
+  .global-search__button-submit
+
+<div class="head">
+  <div class="menu">
+    <ul class="menu__tabs">
+      <li class="menu__tabs-item"> ... </li>
+      <li class="menu__tabs-item"> ... </li>
+      <li class="menu__tabs-item"> ... </li>
+      <li class="menu__tabs-item"> ... </li>
+    </ul>
+  </div>
+  <div class="logo">
+    <img class="logo__image" src="..." width="200" height="500">
+  </div>
+  <div class="search-form">
+    <form class="search-form__form">
+      <label class="search-form__label">Search</label>
+      <input class="search-form__input-text" type="text">
+      <input class="search-form__input-button" type="submit">
+    </form>
+  </div>
+  <div class="auth-form">
+    <form class="auth-form__form">
+      <label class="auth-form__label">Username</label>
+      <input class="auth-form__input-text" type="text">
+      <label class="auth-form__label">Password</label>
+      <input class="auth-form__input-button" type="submit">
+    </form>
+  </div>
+</div>
+
