@@ -7,7 +7,7 @@
     <link href="public/ico/favicon.ico" rel="shortcut icon" type="image/x-icon">
 
     <title>
-      Globe and Mail front-end code style guide
+      Front-end code style guide
     </title>
 
     <link rel="stylesheet" href="code-guide.css">
@@ -19,11 +19,10 @@
     <header class="masthead">
   <div class="container">
     <span class="icon">&#9997;</span>
-    <h1>Globe and Mail front-end code style guide</h1>
+    <h1>Front-end code style guide</h1>
     <p class="lead">Standards for developing flexible, durable, and sustainable HTML, CSS and JavaScript</p>
   </div>
 </header>
-
 
     <div class="heading" id="toc">
   <h2>Table of contents</h2>
@@ -61,7 +60,7 @@
       <li><a href="#css-shorthand">Shorthand notation</a></li>
       <li><a href="#css-nesting">Nesting in Sass</a></li>
       <li><a href="#css-comments">Comments</a></li>
-      <li><a href="#css-specificity">Selectors, Specificity and Depth of Applicability</a></li>
+      <li><a href="#css-specificity">Selectors and secificity</a></li>
       <li><a href="#css-classes">BEM</a></li>
       <li><a href="#css-organization">Organization</a></li>
     </ul>
@@ -92,10 +91,9 @@
 </div>
 <div class="section">
   <div class="col">
-    <p>This guide was forked from <a href="http://codeguide.co/">@mdo's code guide</a>. In order to compile it you will need to have <a href="http://jekyllrb.com/">Jekyll</a> installed as well as <a herf="https://www.python.org/downloads/">Python 2.7.8</a>.</p>
+    <p>This guide was forked from <a href="http://codeguide.co/">@mdo's code guide</a>. In order to compile it you will need to have <a href="http://jekyllrb.com/">Jekyll</a> installed as well as <a herf="https://www.python.org/downloads/">Python >= 2.7.5</a>.</p>
   </div>
 </div>
-
 
 <div class="heading" id="why">
   <h2>Why have a code style guide?</h2>
@@ -128,11 +126,17 @@
   <div class="col">
     <h3>General practices</h3>
     <ul>
-      <li>Use soft tabs with two spaces— they're the only way to guarantee code renders the same in any environment.</li>
-      <li>Nested elements should be indented once (two spaces).</li>
-      <li>Always use double quotes, never single quotes, on attributes.</li>
+      <li>Use soft tabs with two spaces— they're the only way to guarantee code renders the same in any environment</li>
+      <li>Nested elements should be indented once (two spaces)</li>
+      <li>Always use double quotes, never single quotes, on attributes</li>
+      <li>Declare a character set (UTF-8)</li>
+      <li>Use an HTML5 doctype: enforce standards mode and more consistent rendering in every browser possible with this simple doctype</li>
+      <li>TODO: add a doctype on mobile web (!!!)</li>
+      <li>Enable the <a href="http://stackoverflow.com/questions/6771258/whats-the-difference-if-meta-http-equiv-x-ua-compatible-content-ie-edge-e">best standards support possible for IE</a> with the X-UA-Compatible meta tag</li>
+      <li>Avoid inline styles</li>
       <li>Don't include a trailing slash in self-closing elements— the <a href="http://dev.w3.org/html5/spec-author-view/syntax.html#syntax-start-tag">HTML5 spec</a> says they're optional.</li>
-      <li>Use the right tag for the applicable context. For example, use a <code>h3</code> instead of something ridiculous <code>&lt;span class="heading"&gt;</code>
+      <li>Use the right tag for the applicable context. For example, use a <code>h3</code> instead of something ridiculous like <code>&lt;span class="heading"&gt;</code>.</li>
+      <li>Be aware of what <a href="http://diveintohtml5.info/semantics.html">semantics in HTML</a>(5) are all about but don't get stressed out over it</li>
       <li>See also: <a href="#editor">Editor configuration</a></li>
     </ul>
   </div>
@@ -149,7 +153,7 @@
     <span class="nt">&lt;script&gt;</span>
     <span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
     <span class="nt">&lt;/script&gt;</span>
-    <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">&quot;hello-world&quot;</span><span class="nt">&gt;</span>Hello, world!<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>Hello, world!<span class="nt">&lt;/h1&gt;</span>
   <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span></code></pre></div>
   </div>
@@ -158,10 +162,9 @@
 <div class="section" id="html-semantics">
   <div class="col">
     <h3>Semantics</h3>
-    <p>Disclaimer: This portion of the guide has been heavily inspired by <a href="http://nicolasgallagher.com/about-html-semantics-front-end-architecture/">Nicholas Gallagher's post</a> on the same topic.<p>
-    <p>Semantics is the <a href="http://en.wikipedia.org/wiki/Semantics" title="Wikipedia entry on semantics">study of the relationships between signs and symbols and what they represent</a>. With regards to front-end development, semantics are largely concerned with the meaning of HTML elements, attributes and attribute values. Semantics are usually <a href="https://html.spec.whatwg.org/multipage/" title="The HTML Living Standard Spec">formalised in specifications</a> though after formalization can be modified according to adaptation (or lack thereof) by developers. The principle of writing "semantic HTML" is one of the foundations of modern, professional front-end development.</p>
+    <p>With regards to front-end development, semantics are largely concerned with the meaning of HTML elements, attributes and attribute values. Semantics are usually <a href="https://html.spec.whatwg.org/multipage/" title="The HTML Living Standard Spec">formalised in specifications</a> though after formalization can be modified according to adaptation (or lack thereof) by developers. The principle of writing "semantic HTML" is one of the foundations of modern, professional front-end development.</p>
     <p>Most semantics are related to the content of a web page (the h1 element, lang attribute, email value of the type attribute of the input element) though <strong>not all semantics need to be content derived</strong>. Class name semantics are different to those of HTML elements: you can't have a "wrong" class name.</p>
-    <p>HTML <a href="http://dev.w3.org/html5/spec/global-attributes.html#classes">spec on classes</a> states:<p>
+    <p>The HTML <a href="http://dev.w3.org/html5/spec/global-attributes.html#classes">spec on classes</a> states:<p>
     <blockquote>…authors are encouraged to use [class attribute] values that describe the nature of the content, rather than values that describe the desired presentation of the content.</blockquote>
     <p>But there's no real reason to do this:</p>
       <ul>
@@ -185,8 +188,8 @@
 
     <p>TODO: Therefore, with regards to semantics, class names should ... </p>
   </div>
-</div>
--->
+</div> -->
+
 <div class="section" id="html-microdata">
   <div class="col">
     <h3>Microdata</h3>
@@ -223,12 +226,14 @@
     <ul>
       <li>enabling as many people as possible to use web sites, even when those people's abilities are limited in some way</li>
       <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Web_Development">MDN documentation on accessibility</a></li>
+      <li>use best-practices you already know: <code>title="attributes"</code> and <code>&lt;img alt="Alternate text"&gt;</code></li>
       <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA">ARIA</a> defines ways to make web content/applications more accessible: it is "a framework for adding attributes to identify features for user interaction, how they relate to each other, and their current state"</li>
-      <li>ARIA isn't everything when it comes to accessibility but it plays a large part</li>
-      <li>the <code>role</code> attribute can define widgets types (menu, slider etc.) as well as the structure or region of a web page and affects what is reported to a screen reader or other assistive technology</li>
-      <li>some elements have an implied ARIA role: ie. the <code>a</code> element's default <code>role="link"</code></li>
+      <li>use <a href="http://accessibility.oit.ncsu.edu/training/accessibility-handbook/aria-landmarks.html">ARIA landmarks</a></li>
+      <blockquote>…landmark roles ("landmarks") programmatically identify sections of a page. They help assistive technology users orient themselves to a page and help them navigate easily to various sections of a page.
+        <cite><a href="http://www.w3.org/WAI/GL/wiki/Using_ARIA_landmarks_to_identify_regions_of_a_page">www.w3.org/WAI</A></cite>
+      </blockquote>
       <li>the "role" attribute should not be placed on another element that already has semantic meaning. It should only be placed on <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code> elements.</li>
-      <li>we should focus on the use of <a href="http://accessibility.oit.ncsu.edu/training/accessibility-handbook/aria-landmarks.html">ARIA landmarks</a></li>
+      <li>TODO: aria-label and aria-labelledby</li>
     </ul>
   </div>
   <div class="col">
@@ -370,7 +375,6 @@
   </div>
 </div>
 
-
 <div class="heading" id="css">
   <h2>CSS</h2>
 </div>
@@ -381,8 +385,8 @@
     <ul>
       <li>Use soft tabs with two spaces—they're the only way to guarantee code renders the same in any environment.</li>
       <li>When grouping selectors, keep individual selectors to a single line.</li>
-      <li>Include one space before the opening brace of declaration blocks for legibility.</li>
-      <li>Place closing braces of declaration blocks on a new line.</li>
+      <li>Include one space before the opening brace <code>{</code> of declaration blocks for legibility.</li>
+      <li>Place closing braces <code>}</code> of declaration blocks on a new line.</li>
       <li>Include one space after <code>:</code> for each declaration.</li>
       <li>Each declaration should appear on its own line for more accurate error reporting.</li>
       <li>End all declarations with a semi-colon. The last declaration's is optional, but your code is more error prone without it.</li>
@@ -392,6 +396,7 @@
       <li>Lowercase all hex values, e.g., <code>#fff</code>. Lowercase letters are much easier to discern when scanning a document as they tend to have more unique shapes.</li>
       <li>Use shorthand hex values where available, e.g., <code>#fff</code> instead of <code>#ffffff</code>.</li>
       <li>Quote attribute values in selectors, e.g., <code>input[type="text"]</code>. <a href="http://mathiasbynens.be/notes/unquoted-attribute-values#css">They’re only optional in some cases</a>, and it’s a good practice for consistency.</li>
+      <li>Use single quotes for multi-word fonts and background-image references</li>
       <li>Avoid specifying units for zero values, e.g., <code>margin: 0;</code> instead of <code>margin: 0px;</code>.</li>
     </ul>
     <p>Questions on the terms used here? See the <a href="http://en.wikipedia.org/wiki/Cascading_Style_Sheets#Syntax">syntax section of the Cascading Style Sheets article</a> on Wikipedia.</p>
@@ -404,20 +409,21 @@
 <span class="p">}</span>
 
 <span class="c">/* Bad CSS */</span>
-<span class="nc">.selector</span><span class="o">,</span> <span class="nc">.selector-secondary</span><span class="o">,</span> <span class="nc">.selector</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="nt">text</span><span class="o">]</span> <span class="p">{</span>
+<span class="nc">.selector</span><span class="o">,</span> <span class="nc">.selector-secondary</span><span class="o">,</span> <span class="nc">.selector</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="nt">text</span><span class="o">]</span><span class="p">{</span>
+  <span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span><span class="m">0px</span> <span class="m">1px</span> <span class="m">2px</span> <span class="m">#CCC</span><span class="o">,</span><span class="k">inset</span> <span class="m">0</span> <span class="m">1px</span> <span class="m">0</span> <span class="m">#FFFFFF</span><span class="p">;</span>
+  <span class="k">font-family</span><span class="o">:</span> <span class="n">Times</span> <span class="n">New</span> <span class="n">Roman</span><span class="o">,</span><span class="n">Helevtica</span><span class="o">,</span><span class="n">verdana</span><span class="p">;</span>
   <span class="k">padding</span><span class="o">:</span><span class="m">15px</span><span class="p">;</span>
-  <span class="k">margin</span><span class="o">:</span><span class="m">0px</span> <span class="m">0px</span> <span class="m">15px</span><span class="p">;</span>
-  <span class="k">background-color</span><span class="o">:</span><span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">.</span><span class="m">5</span><span class="p">);</span>
-  <span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span><span class="m">0px</span> <span class="m">1px</span> <span class="m">2px</span> <span class="m">#CCC</span><span class="o">,</span><span class="k">inset</span> <span class="m">0</span> <span class="m">1px</span> <span class="m">0</span> <span class="m">#FFFFFF</span>
-<span class="p">}</span>
+  <span class="k">background-color</span><span class="o">:</span><span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span> <span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">.</span><span class="m">5</span><span class="p">);</span>
+  <span class="k">margin</span><span class="o">:</span><span class="m">0px</span> <span class="m">0px</span> <span class="m">0px</span> <span class="m">15px</span><span class="p">}</span>
 
 <span class="c">/* Good CSS */</span>
 <span class="nc">.selector</span><span class="o">,</span>
 <span class="nc">.selector-secondary</span><span class="o">,</span>
 <span class="nc">.selector</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="o">]</span> <span class="p">{</span>
   <span class="k">padding</span><span class="o">:</span> <span class="m">15px</span><span class="p">;</span>
-  <span class="k">margin-bottom</span><span class="o">:</span> <span class="m">15px</span><span class="p">;</span>
-  <span class="k">background-color</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,.</span><span class="m">5</span><span class="p">);</span>
+  <span class="k">margin-left</span><span class="o">:</span> <span class="m">15px</span><span class="p">;</span>
+  <span class="k">font-family</span><span class="o">:</span> <span class="s1">&#39;Times New Roman&#39;</span><span class="o">,</span> <span class="n">Helevtica</span><span class="o">,</span> <span class="n">Verdana</span><span class="p">;</span>
+  <span class="k">background-color</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span> <span class="o">.</span><span class="m">5</span><span class="p">);</span>
   <span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span> <span class="m">0</span> <span class="m">1px</span> <span class="m">2px</span> <span class="m">#ccc</span><span class="o">,</span> <span class="k">inset</span> <span class="m">0</span> <span class="m">1px</span> <span class="m">0</span> <span class="m">#fff</span><span class="p">;</span>
 <span class="p">}</span></code></pre></div>
   </div>
@@ -588,7 +594,7 @@
 <div class="section" id="css-nesting">
   <div class="col">
     <h3>Nesting in Sass</h3>
-    <p>Avoid unnecessary nesting. Just because you can nest, doesn't mean you always should. Consider nesting only if you must scope styles to a parent and if there are multiple elements to be nested. Overuse of nesting can lead to unfortaunte things like a long depth of applicability.</p>
+    <p>Avoid unnecessary nesting. Just because you can nest doesn't mean you should. Consider nesting only if you must scope styles to a parent and if there are multiple elements to be nested. Overuse of nesting can easily lead to "selector-itis" and a long depth of applicability.</p>
   </div>
   <div class="col">
     <div class="highlight"><pre><code class="language-scss" data-lang="scss"><span class="c1">// Without nesting</span>
@@ -608,6 +614,7 @@
     <h3>Comments</h3>
     <p>Code is written and maintained by people. Ensure your code is descriptive, well commented, and approachable by others. Great code comments convey context or purpose. Do not simply reiterate a component or class name.</p>
     <p>Be sure to write in complete sentences for larger comments and succinct phrases for general notes.</p>
+    <o>In sass files use <code>// Single line comments</code> providing your comment is one line.</p>
   </div>
   <div class="col">
     <div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* Bad example */</span>
@@ -626,7 +633,7 @@
 
 <div class="section" id="css-specificity">
   <div class="col">
-    <h3>Selectors, Specificity and Depth of Applicability</h3>
+    <h3>Selectors and specificity</h3>
     <p>When writing CSS, you should have a firm understanding of <a href="http://css-tricks.com/specifics-on-css-specificity/">specificity</a> and its implications.<p>
     <ul>
       <li>do not rely on HTML structure and avoid rules bound to HTML elements</li>
@@ -640,11 +647,18 @@
       <li>use <code>js-*</code> classes to denote behavior (as opposed to style), but keep these classes out of your CSS</li>
       <li>never reference <code>js-*</code> prefixed class names from CSS files</li>
     </ul>
-    <p>Good reads on specificty:<br>
-    <a href="http://css-tricks.com/specifics-on-css-specificity/">css-tricks.com/specifics-on-css-specificity</a><br>
-    <a href="http://csswizardry.com/2012/07/shoot-to-kill-css-selector-intent/">csswizardry.com/2012/07/shoot-to-kill-css-selector-intent</a></p>
+    <p>Good reads on specificty:<p>
+    <ul>
+      <li><a href="http://css-tricks.com/specifics-on-css-specificity/">css-tricks.com/specifics-on-css-specificity</a></li>
+      <li><a href="http://csswizardry.com/2012/07/shoot-to-kill-css-selector-intent/">csswizardry.com/2012/07/shoot-to-kill-css-selector-intent</a></li>
+    </ul>
+
     <h4>Limiting the Depth of Applicability</h4>
-    <p>Probably the most common problem with CSS is managing specificity. Multiple CSS rules compete in styling a particular element on the page. The greater the depth of our css selectors, the more they are tied to a particular HTML structure and the less reusable and maintainable they are. Ideally we want to <strong>reduce the depth of applicability</strong> in order to decouple our html and css and so create <em>more modular sites</em>.</p>
+    <p>According to <a href="https://twitter.com/snookca">Jonathan Snook</a>:</p>
+    <blockquote>The depth of applicability is the number of generations that are affected by a given rule.
+      <cite><a href="http://smacss.com/book/applicability">smacss.com/book/applicability</a></cite>
+    </blockquote>
+    <p>A high depth of applicability means that components cannot be easily moved around; CSS is reliant on the HTML structure of the page. Multiple CSS rules end up competing in styling a particular element on the page (<code>!important</code>) and our CSS becomes less maintable and reusable. Ideally we want to <strong>reduce the depth of applicability</strong> in order to decouple our html and css and so create <em>more modular sites</em>.</p>
   </div>
   <div class="col">
     <div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/* Examples of bad CSS */</span>
@@ -652,6 +666,19 @@
 <span class="c">/* uses id; qualified with HTML tag name */</span>
 <span class="nt">h2</span><span class="nf">#headline</span> <span class="p">{</span>
   <span class="k">font-size</span><span class="o">:</span> <span class="m">36px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">/* CSS and HTML are tightly coupled */</span>
+<span class="nf">#sidebar</span> <span class="nt">div</span> <span class="p">{</span>
+    <span class="k">border</span><span class="o">:</span> <span class="m">1px</span> <span class="k">solid</span> <span class="m">#333</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nf">#sidebar</span> <span class="nt">div</span> <span class="nt">h3</span> <span class="p">{</span>
+  <span class="k">margin-top</span><span class="o">:</span> <span class="m">5px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nf">#sidebar</span> <span class="nt">div</span> <span class="nt">ul</span> <span class="p">{</span>
+  <span class="k">margin-bottom</span><span class="o">:</span> <span class="m">5px</span>
 <span class="p">}</span>
 
 <span class="c">/* uses id; more than one id in rule; qualified with HTML tag name */</span>
@@ -740,6 +767,7 @@
 <span class="nc">.element-heading</span> <span class="p">{</span> <span class="o">...</span> <span class="p">}</span></code></pre></div>
   </div>
 </div>
+
 
 <div class="heading" id="editor">
   <h2>Editor configuration</h2>

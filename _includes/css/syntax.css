@@ -5,19 +5,20 @@
 }
 
 /* Bad CSS */
-.selector, .selector-secondary, .selector[type=text] {
+.selector, .selector-secondary, .selector[type=text]{
+  box-shadow:0px 1px 2px #CCC,inset 0 1px 0 #FFFFFF;
+  font-family: Times New Roman,Helevtica,verdana;
   padding:15px;
-  margin:0px 0px 15px;
-  background-color:rgba(0, 0, 0, 0.5);
-  box-shadow:0px 1px 2px #CCC,inset 0 1px 0 #FFFFFF
-}
+  background-color:rgba(0, 0, 0,0.5);
+  margin:0px 0px 0px 15px}
 
 /* Good CSS */
 .selector,
 .selector-secondary,
 .selector[type="text"] {
   padding: 15px;
-  margin-bottom: 15px;
-  background-color: rgba(0,0,0,.5);
+  margin-left: 15px;
+  font-family: 'Times New Roman', Helevtica, Verdana;
+  background-color: rgba(0,0,0, .5);
   box-shadow: 0 1px 2px #ccc, inset 0 1px 0 #fff;
 }

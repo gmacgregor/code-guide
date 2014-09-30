@@ -5,6 +5,19 @@ h2#headline {
   font-size: 36px;
 }
 
+/* CSS and HTML are tightly coupled */
+#sidebar div {
+    border: 1px solid #333;
+}
+
+#sidebar div h3 {
+  margin-top: 5px;
+}
+
+#sidebar div ul {
+  margin-bottom: 5px
+}
+
 /* uses id; more than one id in rule; qualified with HTML tag name */
 div#page #sidebar h2.title {
   color: green;
